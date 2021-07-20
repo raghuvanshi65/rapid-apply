@@ -1,6 +1,7 @@
 package com.example.rapidapply.entity;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity(name = "Experience")
 @Table(name = "experience")
@@ -13,7 +14,7 @@ public class Experience {
     @Column(name = "org_name")
     private String orgName;
 
-    @Column(name="description")
+    @Column(name = "description")
     private String description;
 
     @Column(name = "work_profile")
@@ -21,6 +22,18 @@ public class Experience {
 
     @Column(name = "certificate_link")
     private String certificateLink;
+
+    @Column(name = "product_link")
+    private String productLink;
+
+    @Column(name = "start_date")
+    private Date startDate;
+
+    @Column(name = "current")
+    private Character current;
+
+    @Column(name = "end_date")
+    private Date endDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -58,12 +71,44 @@ public class Experience {
         this.workProfile = workProfile;
     }
 
+    public String getProductLink() {
+        return productLink;
+    }
+
+    public void setProductLink(String productLink) {
+        this.productLink = productLink;
+    }
+
     public String getCertificateLink() {
         return certificateLink;
     }
 
     public void setCertificateLink(String certificateLink) {
         this.certificateLink = certificateLink;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Character getCurrent() {
+        return current;
+    }
+
+    public void setCurrent(Character current) {
+        this.current = current;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
     }
 
     public User getUser() {

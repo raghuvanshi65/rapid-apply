@@ -202,6 +202,14 @@ public class User {
         projects.setUser(this);
     }
 
+    public List<Experience> getExperienceList() {
+        return experienceList;
+    }
+
+    public void setExperienceList(List<Experience> experienceList) {
+        this.experienceList = experienceList;
+    }
+
     public void addExperience(Experience experience){
         experienceList.add(experience);
         experience.setUser(this);
@@ -210,6 +218,14 @@ public class User {
     public void removeExperience(Experience experience){
         experienceList.remove(experience);
         experience.setUser(this);
+    }
+
+    public List<Achievements> getAchievementsList() {
+        return achievementsList;
+    }
+
+    public void setAchievementsList(List<Achievements> achievementsList) {
+        this.achievementsList = achievementsList;
     }
 
     public void addAchievements(Achievements achievements){

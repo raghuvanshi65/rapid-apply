@@ -8,46 +8,39 @@ import org.immutables.value.Value;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import java.util.List;
 import java.util.UUID;
 
 @JsonSerialize
-@JsonDeserialize(as = ImmutableUser.class)
+@JsonDeserialize(as = ImmutableExperience.class)
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Value.Immutable
-public interface User {
+public interface Experience {
 
     @Nullable
-    UUID getId();
+    UUID getExpId();
 
     @Nonnull
-    String getEmail();
+    String getOrgName();
 
     @Nonnull
-    String getFullname();
+    String getDescription();
 
     @Nonnull
-    String getPhone();
+    String getWorkProfile();
 
     @Nullable
-    Address getAddress();
+    String getCertificateLink();
 
     @Nullable
-    List<PublicProfile> getPublicProfileList();
+    String getProductLink();
+
+    @Nonnull
+    String getStartDate();
 
     @Nullable
-    List<Education> getEducationList();
+    Integer getCurrent();
 
     @Nullable
-    List<Skills> getSkillsList();
-
-    @Nullable
-    List<Projects> getProjectsList();
-
-    @Nullable
-    List<Experience> getExperienceList();
-
-    @Nullable
-    List<Achievements> getAchievementsList();
+    String getEndDate();
 }
