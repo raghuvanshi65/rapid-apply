@@ -6,4 +6,5 @@ import org.springframework.stereotype.Component;
 
 @Component
 public interface AddressRepository extends JpaRepository<Address,String> {
+    public abstract Address getAddressByUser_UserId(String userId);
 }

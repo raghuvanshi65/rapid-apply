@@ -26,7 +26,8 @@ public class Address {
     @Column(name = "country")
     private String country;
 
-    @OneToOne(mappedBy = "address")
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id")
     private User user;
 
     /**

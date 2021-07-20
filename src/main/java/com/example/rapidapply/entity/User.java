@@ -24,8 +24,8 @@ public class User {
     @Column(name = "phone")
     private String phone;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "address_id", referencedColumnName = "address_id")
+    @OneToOne(mappedBy = "user" ,cascade = CascadeType.ALL ,
+                fetch = FetchType.LAZY , optional = true)
     private Address address;
 
     @OneToMany(
