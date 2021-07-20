@@ -130,6 +130,14 @@ public class User {
         this.address = address;
     }
 
+    public List<Education> getEducationList() {
+        return educationList;
+    }
+
+    public void setEducationList(List<Education> educationList) {
+        this.educationList = educationList;
+    }
+
     public void addEducation(Education education){
         educationList.add(education);
         education.setUser(this);
@@ -156,6 +164,14 @@ public class User {
     public void removePublicProfile(PublicProfile publicProfile){
         publicProfileList.remove(publicProfile);
         publicProfile.setUser(null);
+    }
+
+    public List<Skills> getSkillsList() {
+        return skillsList;
+    }
+
+    public void setSkillsList(List<Skills> skillsList) {
+        this.skillsList = skillsList;
     }
 
     public void addSkills(Skills skill){

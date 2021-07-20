@@ -57,7 +57,7 @@ public class PublicProfileController {
     }
 
     @RequestMapping(path = "/delete/{publicProfileId}" ,method = RequestMethod.DELETE)
-    public ResponseEntity<ResponseModel<Object>> updatePublicProfile(@PathVariable("publicProfileId") String publicProfileId) {
+    public ResponseEntity<ResponseModel<Object>> deletePublicProfile(@PathVariable("publicProfileId") String publicProfileId) {
         ResponseModel<Object> responseModel;
         try {
             if (publicProfileId == null) {

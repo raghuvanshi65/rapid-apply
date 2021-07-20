@@ -12,33 +12,18 @@ import java.util.List;
 import java.util.UUID;
 
 @JsonSerialize
-@JsonDeserialize(as = ImmutableUser.class)
-@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonDeserialize(as = ImmutableSkills.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Value.Immutable
-public interface User {
+public interface Skills {
 
     @Nullable
-    UUID getId();
+    UUID getSkillId();
 
     @Nonnull
-    String getEmail();
+    String getSkillType();
 
     @Nonnull
-    String getFullname();
-
-    @Nonnull
-    String getPhone();
-
-    @Nullable
-    Address getAddress();
-
-    @Nullable
-    List<PublicProfile> getPublicProfileList();
-
-    @Nullable
-    List<Education> getEducationList();
-
-    @Nullable
-    List<Skills> getSkillsList();
+    List<String> getSkillSubset();
 }

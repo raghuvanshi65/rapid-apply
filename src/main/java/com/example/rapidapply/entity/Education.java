@@ -20,17 +20,16 @@ public class Education {
     private String academicLevel;
 
     @Column(name = "grading")
-    @Enumerated(EnumType.ORDINAL)
-    private Grading grading;
+    private String grading;
 
     @Column(name = "marks_grade")
     private String marksGrade;
 
     @Column(name = "starting_year")
-    private Year startingYear;
+    private String startingYear;
 
     @Column(name = "ending_year")
-    private Year endingYear;
+    private String endingYear;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
@@ -60,11 +59,11 @@ public class Education {
         this.academicLevel = academicLevel;
     }
 
-    public Grading getGrading() {
+    public String getGrading() {
         return grading;
     }
 
-    public void setGrading(Grading grading) {
+    public void setGrading(String grading) {
         this.grading = grading;
     }
 
@@ -76,19 +75,19 @@ public class Education {
         this.marksGrade = marksGrade;
     }
 
-    public Year getStartingYear() {
+    public String getStartingYear() {
         return startingYear;
     }
 
-    public void setStartingYear(Year startingYear) {
+    public void setStartingYear(String startingYear) {
         this.startingYear = startingYear;
     }
 
-    public Year getEndingYear() {
+    public String getEndingYear() {
         return endingYear;
     }
 
-    public void setEndingYear(Year endingYear) {
+    public void setEndingYear(String endingYear) {
         this.endingYear = endingYear;
     }
 
