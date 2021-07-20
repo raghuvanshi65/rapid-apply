@@ -2,6 +2,7 @@ package com.example.rapidapply.commons;
 
 import com.example.rapidapply.entity.Projects;
 import com.example.rapidapply.helpers.PowerStringTokenizer;
+import com.example.rapidapply.models.ImmutableProjects;
 
 import java.sql.Date;
 import java.util.UUID;
@@ -32,5 +33,13 @@ public class ProjectsMapper {
         projects.setProjectLink(projectsModel.getProjectLink());
 
         return projects;
+    }
+
+    public static com.example.rapidapply.models.Projects entityToModel(Projects projects){
+        return ImmutableProjects.builder().projectId(UUID.fromString(projects.getProjectId()))
+                .projectName(projects.getProjectName()).addAllLanguages(PowerStringTokenizer.stringToList(projects.getLanguages()))
+                .techStack(PowerStringTokenizer.stringToList(projects.getTechstack())).description(projects.getDescription())
+                .projectLink(projects.getProjectLink()==null ? null : projects.getProjectLink()).wIP(projects.getWip()=='Y'?1:0)
+                .startingDate(projects.getStartingDate().toString()).endingDate(projects.getEndingDate().toString()).build();
     }
 }

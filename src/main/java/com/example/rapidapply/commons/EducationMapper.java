@@ -2,6 +2,7 @@ package com.example.rapidapply.commons;
 
 import com.example.rapidapply.entity.Education;
 import com.example.rapidapply.helpers.Grading;
+import com.example.rapidapply.models.ImmutableEducation;
 
 import java.util.Locale;
 import java.util.UUID;
@@ -22,5 +23,12 @@ public class EducationMapper {
         educationEntity.setEndingYear(educationModel.getEndingYear());
 
         return educationEntity;
+    }
+
+    public static com.example.rapidapply.models.Education entityToModel(Education education){
+        return ImmutableEducation.builder().educationId(UUID.fromString(education.getEducationId()))
+                .instituteName(education.getInstitueName()).academicLevel(education.getAcademicLevel())
+                .grading(education.getGrading()).startingYear(education.getStartingYear())
+                .endingYear(education.getEndingYear()).marksGrade(education.getMarksGrade()).build();
     }
 }

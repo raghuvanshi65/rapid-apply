@@ -8,6 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -70,6 +71,31 @@ public class UserController {
             LOGGER.error("An exception occurred while updateUser in UserController class",exception);
             responseModel = ImmutableResponseModel.builder().accepted(false)
                     .message("Some exception occurred while updateUser in UserController class")
+                    .build();
+            return ResponseEntity.status(500).body(responseModel);
+        }
+    }
+
+    @RequestMapping(path = "/getall/{email}" , method = RequestMethod.GET)
+    public ResponseEntity<ResponseModel<Object>> getUserDetails(@PathVariable("email") String email){
+        ResponseModel<Object> responseModel;
+        try {
+            User userModel = userService.getAll(email);
+            if(userModel==null){
+                responseModel = ImmutableResponseModel.builder().accepted(false)
+                        .message("Some exception occurred while getUserDetails in UserService class")
+                        .build();
+                LOGGER.info("Some exception occurred while getUserDetails in UserService class");
+                return ResponseEntity.status(500).body(responseModel);
+            }
+            responseModel = ImmutableResponseModel.builder().accepted(false)
+                    .message("user is updated successfully").body(userModel)
+                    .build();
+            return ResponseEntity.status(200).body(responseModel);
+        }catch (Exception exception){
+            LOGGER.error("An exception occurred while getUserDetails in UserController class",exception);
+            responseModel = ImmutableResponseModel.builder().accepted(false)
+                    .message("Some exception occurred while getUserDetails in UserController class")
                     .build();
             return ResponseEntity.status(500).body(responseModel);
         }

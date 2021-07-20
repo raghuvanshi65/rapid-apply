@@ -1,6 +1,7 @@
 package com.example.rapidapply.commons;
 
 import com.example.rapidapply.entity.Experience;
+import com.example.rapidapply.models.ImmutableExperience;
 
 import java.sql.Date;
 import java.util.UUID;
@@ -27,5 +28,15 @@ public class ExperienceMapper {
         experienceEntity.setEndDate(experienceModel.getEndDate()!=null ? Date.valueOf(experienceModel.getEndDate()) : null);
 
         return experienceEntity;
+    }
+
+    public static com.example.rapidapply.models.Experience entityToModel(Experience experience){
+        return ImmutableExperience.builder().expId(UUID.fromString(experience.getExperienceId()))
+                .orgName(experience.getOrgName()).workProfile(experience.getWorkProfile())
+                .description(experience.getDescription()).current(experience.getCurrent()=='Y'?1:0)
+                .startDate(experience.getStartDate().toString())
+                .certificateLink(experience.getCertificateLink()==null?null:experience.getCertificateLink())
+                .productLink(experience.getProductLink()!=null? experience.getProductLink() : null)
+                .endDate(experience.getEndDate().toString()).build();
     }
 }

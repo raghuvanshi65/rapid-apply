@@ -2,6 +2,7 @@ package com.example.rapidapply.commons;
 
 import com.example.rapidapply.entity.Skills;
 import com.example.rapidapply.helpers.PowerStringTokenizer;
+import com.example.rapidapply.models.ImmutableSkills;
 
 import java.util.Arrays;
 import java.util.List;
@@ -24,4 +25,9 @@ public class SkillsMapper {
         return skills;
     }
 
+    public static com.example.rapidapply.models.Skills entityToModel(Skills skillsEntity){
+        return ImmutableSkills.builder().skillId(UUID.fromString(skillsEntity.getSkillId()))
+                .skillType(skillsEntity.getSkillType()).skillSubset(PowerStringTokenizer.stringToList(skillsEntity.getSkillSubset()))
+                .build();
+    }
 }

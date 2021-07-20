@@ -1,5 +1,6 @@
 package com.example.rapidapply.services;
 
+import com.example.rapidapply.commons.UserMapper;
 import com.example.rapidapply.commons.UserPublicMapper;
 import com.example.rapidapply.commons.UserSignUpMapper;
 import com.example.rapidapply.entity.User;
@@ -38,6 +39,17 @@ public class UserService {
             return UserPublicMapper.UserEntityToModel(userEntity);
         }catch (Exception exception){
             LOGGER.error("An exception occurred while updateUser in UserService class",exception);
+            return null;
+        }
+    }
+
+    public com.example.rapidapply.models.User getAll(String email){
+        try {
+            User userEntity = userRepository.getUserByEmail(email);
+            LOGGER.info("user details retrieved successfully");
+            return UserMapper.userEntityToModel(userEntity);
+        }catch (Exception exception){
+            LOGGER.error("An exception occurred while getAll in UserService class",exception);
             return null;
         }
     }
