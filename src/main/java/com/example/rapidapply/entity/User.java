@@ -189,6 +189,14 @@ public class User {
         projects.setUser(this);
     }
 
+    public List<Projects> getProjectsList() {
+        return projectsList;
+    }
+
+    public void setProjectsList(List<Projects> projectsList) {
+        this.projectsList = projectsList;
+    }
+
     public void removeProjects(Projects projects){
         projectsList.remove(projects);
         projects.setUser(this);
