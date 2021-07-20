@@ -34,4 +34,7 @@ public interface Address {
 
     @Nonnull
     String getCountry();
+
+    @Nullable
+    String getHidden();
 }

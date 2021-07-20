@@ -2,6 +2,7 @@ package com.example.rapidapply.commons;
 
 import com.example.rapidapply.entity.Address;
 
+import java.util.Locale;
 import java.util.UUID;
 
 public class AddressMapper {
@@ -16,6 +17,7 @@ public class AddressMapper {
         address.setCity(addressModel.getCity());
         address.setState(addressModel.getState());
         address.setCountry(addressModel.getCountry());
+        address.setHidden(addressModel.getHidden()==null ? "NO" : addressModel.getHidden().trim().toUpperCase(Locale.ROOT));
         return address;
     }
 }

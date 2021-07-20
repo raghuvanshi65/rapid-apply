@@ -26,6 +26,9 @@ public class Address {
     @Column(name = "country")
     private String country;
 
+    @Column(name = "hidden")
+    private String hidden;
+
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     private User user;
@@ -72,6 +75,14 @@ public class Address {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getHidden() {
+        return hidden;
+    }
+
+    public void setHidden(String hidden) {
+        this.hidden = hidden;
     }
 
     public User getUser() {

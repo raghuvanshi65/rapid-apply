@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class AddressService {
 
-    private static Logger LOGGER = LoggerFactory.getLogger(AddressService.class);
+    private static final Logger  LOGGER = LoggerFactory.getLogger(AddressService.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -38,6 +38,7 @@ public class AddressService {
             existingAddress.setCountry(address.getCountry());
             existingAddress.setCity(address.getCity());
             existingAddress.setState(address.getState());
+            existingAddress.setHidden(address.getHidden());
 
             addressRepository.save(existingAddress);
             return address;
